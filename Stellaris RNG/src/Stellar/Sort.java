@@ -3,47 +3,81 @@ package Stellar;
 import java.util.ArrayList;
 
 public class Sort {
+	double[] arr;
      Sort(ArrayList<Trait> t){
-    	 int[] iArr=traitsToInt(t);
+    	 double[] iArr=traitsToInt(t);
     	 int high = iArr.length-1;
-    	 int low = iArr[0];
+    	 double low = iArr[0];
      }
-     private int[] traitsToInt(ArrayList<Trait>t) {
+     
+    Sort(double[]s)
+     {
+    	arr = mergeSort(s, s.length);
+     }
+     
+     
+     private double[] traitsToInt(ArrayList<Trait>t) {
  		int size = t.size();
- 		
- 		int[] ArrSize = new int[size];
+ 		 double[] ArrSize = new double[size];
  		for (int i=0; i<size; i++) {
- 			int word=0;
+ 			double word=0;
  			 String s = t.get(i).getDes();
  			 for(int j=0; j<s.length(); j++ ) {
  				word+=s.indexOf(j); 
  			 }
+ 			 word/=s.length();
  			ArrSize[i]=word;
  		}
  		return ArrSize;
  	}
-     public static void mergeSort(int[] array, int length) {
-    	   if (length<2)
-    	   {
-    		   return;
-    	   }
-    	   int mid = length/2;
-    	   int[]left = new int[mid];
-    	   int[]right = new int[mid-1];
-    	   for(int i=0; i<mid; i++) {
-    		   left[i]=array[i];
-    	   }
-    	   for(int i=mid; i<length; i++) {
-    		   right[i-mid]=array[i];
-    	   }
-    	   mergeSort(left,mid);
-    	   mergeSort(right,length-mid);
-    	   
-    	   
-    	   
-    	   
+     public static double[] merge(
+    		  double[] a, double[] l, double[] r, int left, int right) {
+    		 
+    		    int i = 0, j = 0, k = 0;
+    		    while (i < left && j < right) {
+    		        if (l[i] <= r[j]) {
+    		            a[k++] = l[i++];
+    		        }
+    		        else {
+    		            a[k++] = r[j++];
+    		        }
+    		    }
+    		    while (i < left) {
+    		        a[k++] = l[i++];
+    		    }
+    		    while (j < right) {
+    		        a[k++] = r[j++];
+    		    }
+				return a;
+    		}
+     public static double[]mergeSort(double[] a, int n) {
+    	    if (n < 2) {
+    	        return a;
+    	    }
+    	    int mid = n / 2;
+    	    double[] l = new double[mid];
+    	    double[] r = new double[n - mid];
+
+    	    for (int i = 0; i < mid; i++) {
+    	        l[i] = a[i];
+    	    }
+    	    for (int i = mid; i < n; i++) {
+    	        r[i - mid] = a[i];
+    	    }
+    	    mergeSort(l, mid);
+    	    mergeSort(r, n - mid);
+
+    	   return merge(a, l, r, mid, n - mid);
+    	}
+     public double[] getSort() {
+    	 return arr;
      }
-     public static void merge(int[] array, int low, int mid, int high) {
-    	 int[] leftMerge = new 
+    public String toString(){
+    	String s="";
+    	 for(double p:arr) {
+    		 s+=p+"\n";
+    	 }
+    	 return s;
+    	 
      }
 }

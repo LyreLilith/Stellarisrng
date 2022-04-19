@@ -5,19 +5,37 @@ import java.util.Scanner;
 
 
 class main_runner {
-	ArrayList<Player> Players;
-	 ArrayList<String> names ;
+	//ArrayList<Player> Players;
+	// ArrayList<String> names ;
 	 public static void main(String[] args) {
 		 Scanner scan = new Scanner(System.in);
+		
+		 String papa = scan.nextLine();
+		 int size = papa.length();
+		 double word = 0;
+	 			 for(int j=0; j<size; j++ ) {
+	 				word+=papa.valueOf(j); 
+	 			 }
+	 			 word/=papa.length();
+	 			 System.out.println(word);
+	 			 
+	 }
+		 /*   double[] cool = {5.1, 6,7.9,11,22.9,.3,7,19};
+		   Sort s = new Sort(cool);
+		   System.out.println(s);
+		   double[] coo=s.getSort();
+		   Find k = new Find(coo,0,coo.length,5.1);
+		    }
 		ArrayList<Player> Players = new ArrayList<Player>();
 		 ArrayList<String> names = new ArrayList<String>();
+		
 		 System.out.println("Please Enter the Player names.");
 		 String nanas = new String();
 		 nanas=scan.nextLine();
 	     // System.out.println("Please Enter any Exclusions\nenter \"o\" for Origins, \"s\" for speices and \"t\" for traits\n enter \"f\" when finished.");	
 	    
 	      
-	     /*
+	     
 	      while(!(input.equalsIgnoreCase("f")))
 	      {
 	    		
@@ -51,7 +69,7 @@ class main_runner {
 	    	  				baT= scan.nextLine();
 	    	  			}
 	    	  		}
-	    	  		*/
+	    	  		
 	    	  	
 	    	  			
 	    		  
@@ -63,9 +81,9 @@ class main_runner {
 	
 		 System.out.println(p.toString());
 	 
-	 
 	
+	*/ 
 	 
 	 }
-}
+
 
